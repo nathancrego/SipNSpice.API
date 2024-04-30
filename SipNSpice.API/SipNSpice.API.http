@@ -1,0 +1,6 @@
+@SipNSpice.API_HostAddress = http://localhost:5023
+
+GET {{SipNSpice.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

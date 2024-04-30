@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SipNSpice.API", "SipNSpice.API\SipNSpice.API.csproj", "{A5685964-FEFB-46AE-AEA2-2E426B26E1F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5685964-FEFB-46AE-AEA2-2E426B26E1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5685964-FEFB-46AE-AEA2-2E426B26E1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5685964-FEFB-46AE-AEA2-2E426B26E1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5685964-FEFB-46AE-AEA2-2E426B26E1F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC82EE0D-5510-49D3-9285-29013B12DC64}
+	EndGlobalSection
+EndGlobal
