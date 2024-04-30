@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SipNSpice.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Injecting the dbcontext class using dependency injection
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    //linking to the connection string
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SipNSpiceConnectionString"));
+});
 
 var app = builder.Build();
 
