@@ -22,6 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //Injecting the Repositories (Dependency Injection)
 builder.Services.AddScoped<ICuisineRepository, CuisineRepository>();
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IBaseRepository, BaseRepository>();
 
 var app = builder.Build();
 
