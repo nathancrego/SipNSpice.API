@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SipNSpice.API.Migrations
 {
     /// <inheritdoc />
-    public partial class creationoftables : Migration
+    public partial class reCreationoftables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "tblsnsbases",
+                name: "Bases",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -20,11 +20,11 @@ namespace SipNSpice.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblsnsbases", x => x.Id);
+                    table.PrimaryKey("PK_Bases", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblsnscuisines",
+                name: "Cuisines",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -33,11 +33,11 @@ namespace SipNSpice.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblsnscuisines", x => x.Id);
+                    table.PrimaryKey("PK_Cuisines", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblsnsdrinks",
+                name: "Drinks",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -50,11 +50,11 @@ namespace SipNSpice.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblsnsdrinks", x => x.Id);
+                    table.PrimaryKey("PK_Drinks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblsnsrecipes",
+                name: "Recipes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -67,7 +67,7 @@ namespace SipNSpice.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblsnsrecipes", x => x.Id);
+                    table.PrimaryKey("PK_Recipes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,15 +81,15 @@ namespace SipNSpice.API.Migrations
                 {
                     table.PrimaryKey("PK_BaseDrink", x => new { x.BasesId, x.DrinksId });
                     table.ForeignKey(
-                        name: "FK_BaseDrink_tblsnsbases_BasesId",
+                        name: "FK_BaseDrink_Bases_BasesId",
                         column: x => x.BasesId,
-                        principalTable: "tblsnsbases",
+                        principalTable: "Bases",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BaseDrink_tblsnsdrinks_DrinksId",
+                        name: "FK_BaseDrink_Drinks_DrinksId",
                         column: x => x.DrinksId,
-                        principalTable: "tblsnsdrinks",
+                        principalTable: "Drinks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -105,15 +105,15 @@ namespace SipNSpice.API.Migrations
                 {
                     table.PrimaryKey("PK_CuisineRecipe", x => new { x.CuisinesId, x.RecipesId });
                     table.ForeignKey(
-                        name: "FK_CuisineRecipe_tblsnscuisines_CuisinesId",
+                        name: "FK_CuisineRecipe_Cuisines_CuisinesId",
                         column: x => x.CuisinesId,
-                        principalTable: "tblsnscuisines",
+                        principalTable: "Cuisines",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CuisineRecipe_tblsnsrecipes_RecipesId",
+                        name: "FK_CuisineRecipe_Recipes_RecipesId",
                         column: x => x.RecipesId,
-                        principalTable: "tblsnsrecipes",
+                        principalTable: "Recipes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -139,16 +139,16 @@ namespace SipNSpice.API.Migrations
                 name: "CuisineRecipe");
 
             migrationBuilder.DropTable(
-                name: "tblsnsbases");
+                name: "Bases");
 
             migrationBuilder.DropTable(
-                name: "tblsnsdrinks");
+                name: "Drinks");
 
             migrationBuilder.DropTable(
-                name: "tblsnscuisines");
+                name: "Cuisines");
 
             migrationBuilder.DropTable(
-                name: "tblsnsrecipes");
+                name: "Recipes");
         }
     }
 }

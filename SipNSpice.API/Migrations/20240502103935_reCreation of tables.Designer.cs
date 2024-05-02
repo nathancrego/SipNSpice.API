@@ -12,8 +12,8 @@ using SipNSpice.API.Data;
 namespace SipNSpice.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240430142104_creation of tables")]
-    partial class creationoftables
+    [Migration("20240502103935_reCreation of tables")]
+    partial class reCreationoftables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace SipNSpice.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tblsnsbases");
+                    b.ToTable("Bases");
                 });
 
             modelBuilder.Entity("SipNSpice.API.Models.Domain.Cuisine", b =>
@@ -86,7 +86,7 @@ namespace SipNSpice.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tblsnscuisines");
+                    b.ToTable("Cuisines");
                 });
 
             modelBuilder.Entity("SipNSpice.API.Models.Domain.Drink", b =>
@@ -120,7 +120,7 @@ namespace SipNSpice.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tblsnsdrinks");
+                    b.ToTable("Drinks");
                 });
 
             modelBuilder.Entity("SipNSpice.API.Models.Domain.Recipe", b =>
@@ -154,7 +154,7 @@ namespace SipNSpice.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tblsnsrecipes");
+                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("BaseDrink", b =>

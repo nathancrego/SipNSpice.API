@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SipNSpice.API.Data;
+using SipNSpice.API.Repositories.Implementation;
+using SipNSpice.API.Repositories.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     //linking to the connection string
     options.UseSqlServer(builder.Configuration.GetConnectionString("SipNSpiceConnectionString"));
 });
+
+//Injecting the Repositories (Dependency Injection)
+builder.Services.AddScoped<ICuisineRepository, CuisineRepository>();
 
 var app = builder.Build();
 
