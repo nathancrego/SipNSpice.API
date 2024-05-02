@@ -10,9 +10,9 @@ namespace SipNSpice.API.Data
             
         }
 
-        public DbSet<Cuisine> tblsnscuisines { get; set; }
-        public DbSet<Recipe> tblsnsrecipes { get; set; }
-        public DbSet<Base> tblsnsbases { get; set; }
-        public DbSet<Drink> tblsnsdrinks { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Base> Bases { get; set; }
+        public DbSet<Drink> Drinks { get; set; }
     }
 }
