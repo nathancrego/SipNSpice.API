@@ -44,7 +44,7 @@ namespace SipNSpice.API.Controllers
 
         //GET: /api/cuisines
         [HttpGet]
-        public async Task<IActionResult> GetAllCuisines()
+        public async Task<IActionResult> GetAllCuisine()
         {
             var cuisines = await cuisineRepository.GetAllAsync();
             //Map Domain model to DTO
