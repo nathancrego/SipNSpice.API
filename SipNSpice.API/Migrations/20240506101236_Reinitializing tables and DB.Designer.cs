@@ -12,8 +12,8 @@ using SipNSpice.API.Data;
 namespace SipNSpice.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240502103935_reCreation of tables")]
-    partial class reCreationoftables
+    [Migration("20240506101236_Reinitializing tables and DB")]
+    partial class ReinitializingtablesandDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

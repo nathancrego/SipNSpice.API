@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SipNSpice.API.Migrations
 {
     /// <inheritdoc />
-    public partial class reCreationoftables : Migration
+    public partial class ReinitializingtablesandDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

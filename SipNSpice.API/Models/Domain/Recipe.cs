@@ -4,7 +4,6 @@ namespace SipNSpice.API.Models.Domain
 {
     public class Recipe
     {
-        [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }

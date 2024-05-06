@@ -11,6 +11,6 @@ namespace SipNSpice.API.Models.DTO
         public string Author { get; set; }
         public string ImageUrl { get; set; }
         public DateTime PublishedDate { get; set; }
-        public ICollection<CuisineDto> Cuisines { get; set; } = new List<CuisineDto>();
+        public List<CuisineDto> Cuisines { get; set; } = new List<CuisineDto>();
     }
 }

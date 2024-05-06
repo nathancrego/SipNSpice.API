@@ -61,7 +61,7 @@ namespace SipNSpice.API.Controllers
                     Id = x.Id,
                     MainCuisine = x.MainCuisine,
                     SubCuisine = x.SubCuisine
-                }).ToList(),
+                }).ToList()
             };
             return Ok (response);
         }
