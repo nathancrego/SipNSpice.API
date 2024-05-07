@@ -95,5 +95,106 @@ namespace SipNSpice.API.Controllers
             }
             return Ok (response);
         }
+
+        //GET:{apibaseurl}/api/recipes/{id}
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetRecipeById([FromRoute] Guid id)
+        {
+            var recipe = await recipeRepository.GetByIdAsync(id);
+            if(recipe is null)
+            {
+                return NotFound();
+            }
+            var response = new RecipeDto
+            {
+                Id = recipe.Id,
+                Name = recipe.Name,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Author = recipe.Author,
+                PublishedDate = recipe.PublishedDate,
+                Cuisines = recipe.Cuisines.Select(x => new CuisineDto
+                {
+                    Id = x.Id,
+                    MainCuisine = x.MainCuisine,
+                    SubCuisine = x.SubCuisine
+                }).ToList()
+            };
+            return Ok(response);
+        }
+
+        //PUT: /{apibaseurl}/api/recipes/{id}
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateRecipe([FromRoute] Guid id, UpdateRecipeRequestDto updateRecipeRequest)
+        {
+            var recipe = new Recipe
+            {
+                Id = id,
+                Name = updateRecipeRequest.Name,
+                ShortDescription = updateRecipeRequest.ShortDescription,
+                Description = updateRecipeRequest.Description,
+                ImageUrl = updateRecipeRequest.ImageUrl,
+                Author = updateRecipeRequest.Author,
+                PublishedDate = updateRecipeRequest.PublishedDate,
+                Cuisines = new List<Cuisine>()
+            };
+            foreach(var cuisineGuid in  updateRecipeRequest.Cuisines)
+            {
+                var existingCuisine = await cuisineRepository.GetByIdAsync(cuisineGuid);
+                if(existingCuisine != null)
+                {
+                    recipe.Cuisines.Add(existingCuisine);
+                }
+            }
+            var updatedRecipe = await recipeRepository.UpdateAsync(recipe);
+            if(updatedRecipe == null)
+            {
+                return NotFound();
+            }
+            var response = new RecipeDto
+            {
+                Id = recipe.Id,
+                Name = recipe.Name,
+                ShortDescription = recipe.ShortDescription,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Author = recipe.Author,
+                PublishedDate = recipe.PublishedDate,
+                Cuisines = recipe.Cuisines.Select(x => new CuisineDto
+                {
+                    Id = x.Id,
+                    MainCuisine = x.MainCuisine,
+                    SubCuisine = x.SubCuisine
+                }).ToList()
+            };
+            return Ok(response);
+        }
+
+        //DELETE: {baseurlapi}/api/recipes/{id}
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteRecipe([FromRoute] Guid id)
+        {
+            var deletedRecipe = await recipeRepository.DeleteAsync(id);
+            if(deletedRecipe == null) 
+            { 
+                return NotFound(); 
+            }
+            var response = new RecipeDto
+            {
+                Id = deletedRecipe.Id,
+                Name = deletedRecipe.Name,
+                ShortDescription = deletedRecipe.ShortDescription,
+                Description = deletedRecipe.Description,
+                ImageUrl = deletedRecipe.ImageUrl,
+                Author = deletedRecipe.Author,
+                PublishedDate = deletedRecipe.PublishedDate
+            };
+            return Ok(response);
+        }
+
     }
 }
