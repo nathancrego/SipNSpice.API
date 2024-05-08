@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SipNSpice.API.Models.Domain;
 using SipNSpice.API.Models.DTO;
@@ -21,6 +22,7 @@ namespace SipNSpice.API.Controllers
 
         //POST: api/drinks
         [HttpPost]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> CreateDrink([FromBody] CreateDrinkRequestDto createDrinkRequest)
         {
             //Convert DTO to Domain model
@@ -124,6 +126,7 @@ namespace SipNSpice.API.Controllers
         //PUT:{apibaseurl}/api/drinks/{id}
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> UpdateDrink([FromRoute] Guid id, UpdateDrinkRequestDto updateDrinkRequest)
         {
             var drink = new Drink
@@ -171,6 +174,7 @@ namespace SipNSpice.API.Controllers
         //DELETE: {baseapiurl}/api/drinks/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> DeleteDrink([FromRoute] Guid id)
         {
             var deletedDrink = await drinkRepository.DeleteAsync(id);

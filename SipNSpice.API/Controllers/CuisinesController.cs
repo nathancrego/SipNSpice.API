@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SipNSpice.API.Models.Domain;
 using SipNSpice.API.Models.DTO;
 using SipNSpice.API.Repositories.Interface;
@@ -19,6 +20,7 @@ namespace SipNSpice.API.Controllers
 
         //POST: Function to create Cuisine
         [HttpPost]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> CreateCuisine([FromBody] CreateCuisineRequestDto createCuisineRequest)
         {
             //Map DTO to Domain Model
@@ -86,6 +88,7 @@ namespace SipNSpice.API.Controllers
         //PUT: /api/cuisines/{id}
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> EditCuisine([FromRoute] Guid id, UpdateCuisineRequestDto updateCuisineRequest)
         {
             //Convert DTO to Domain Model
@@ -116,6 +119,7 @@ namespace SipNSpice.API.Controllers
         //DELETE: /api/cuisines/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> DeleteCuisine([FromRoute] Guid id)
         {
             var cuisine = await cuisineRepository.DeleteAsync(id);

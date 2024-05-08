@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SipNSpice.API.Models.Domain;
 using SipNSpice.API.Models.DTO;
@@ -20,6 +21,7 @@ namespace SipNSpice.API.Controllers
 
         //POST:/api/bases
         [HttpPost]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> CreateBase(CreateBaseRequestDto createBaseRequest)
         {
             //Convert DTO to Domain model
@@ -79,6 +81,7 @@ namespace SipNSpice.API.Controllers
         //PUT: api/bases/{id}
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> EditBase([FromRoute] Guid id, UpdateBaseRequestDto updateBaseRequest)
         {
             //Convert DTO to domain model
@@ -104,6 +107,7 @@ namespace SipNSpice.API.Controllers
         //DELETE: api/bases/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> DeleteBase([FromRoute] Guid id)
         {
             var bas = await baseRepository.DeleteAsync(id);

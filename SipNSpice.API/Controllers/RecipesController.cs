@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SipNSpice.API.Models.Domain;
 using SipNSpice.API.Models.DTO;
@@ -20,6 +21,7 @@ namespace SipNSpice.API.Controllers
         }
         //POST:/api/recipes
         [HttpPost]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeRequestDto createRecipeRequest)
         {
             //Convert DTO to Domain Model
@@ -128,6 +130,7 @@ namespace SipNSpice.API.Controllers
         //PUT: /{apibaseurl}/api/recipes/{id}
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> UpdateRecipe([FromRoute] Guid id, UpdateRecipeRequestDto updateRecipeRequest)
         {
             var recipe = new Recipe
@@ -176,6 +179,7 @@ namespace SipNSpice.API.Controllers
         //DELETE: {baseurlapi}/api/recipes/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> DeleteRecipe([FromRoute] Guid id)
         {
             var deletedRecipe = await recipeRepository.DeleteAsync(id);
