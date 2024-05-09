@@ -194,5 +194,88 @@ namespace SipNSpice.API.Controllers
             };
             return Ok(response);
         }
+
+
+        [HttpGet("mocktails")]
+        public async Task<IActionResult> GetMocktails()
+        {
+            var mocktails = await drinkRepository.GetMocktailsAsync();
+            //Convert Domain model to dto
+            var response = new List<DrinkDto>();
+            foreach (var mocktail in mocktails)
+            {
+                response.Add(new DrinkDto
+                {
+                    Id = mocktail.Id,
+                    Name = mocktail.Name,
+                    ShortDescription = mocktail.ShortDescription,
+                    Description = mocktail.Description,
+                    Author = mocktail.Author,
+                    ImageUrl = mocktail.ImageUrl,
+                    PublishedDate = mocktail.PublishedDate,
+                    Bases = mocktail.Bases.Select(x => new BaseDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name
+                    }).ToList(),
+                });
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("cocktails")]
+        public async Task<IActionResult> GetCocktails()
+        {
+            var cocktails = await drinkRepository.GetCocktailsAsync();
+            //Convert Domain model to dto
+            var response = new List<DrinkDto>();
+            foreach (var cocktail in cocktails)
+            {
+                response.Add(new DrinkDto
+                {
+                    Id = cocktail.Id,
+                    Name = cocktail.Name,
+                    ShortDescription = cocktail.ShortDescription,
+                    Description = cocktail.Description,
+                    Author = cocktail.Author,
+                    ImageUrl = cocktail.ImageUrl,
+                    PublishedDate = cocktail.PublishedDate,
+                    Bases = cocktail.Bases.Select(x => new BaseDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name
+                    }).ToList(),
+                });
+            }
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("{basename}")]
+        public async Task<IActionResult> GetDrinksByBase([FromRoute] string basename)
+        {
+            var drink = await drinkRepository.GetDrinkByBaseAsync(basename);
+            if(drink == null )
+            {
+                return NotFound();
+            }
+            //Convert Domain model to Dto
+            var response = new DrinkDto
+            {
+                Id = drink.Id,
+                Name = drink.Name,
+                ShortDescription = drink.ShortDescription,
+                Description = drink.Description,
+                Author = drink.Author,
+                ImageUrl = drink.ImageUrl,
+                PublishedDate = drink.PublishedDate,
+                Bases = drink.Bases.Select(x => new BaseDto
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList()
+            };
+            return Ok(response);
+        }
     }
 }

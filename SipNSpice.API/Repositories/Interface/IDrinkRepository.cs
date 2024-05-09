@@ -9,5 +9,8 @@ namespace SipNSpice.API.Repositories.Interface
         Task<Drink?> GetByIdAsync(Guid id);
         Task<Drink?> UpdateAsync(Drink drink);
         Task<Drink?> DeleteAsync(Guid id);
+        Task<Drink?> GetDrinkByBaseAsync(string basename);
+        Task<IEnumerable<Drink?>> GetMocktailsAsync();
+        Task<IEnumerable<Drink?>> GetCocktailsAsync();
     }
 }

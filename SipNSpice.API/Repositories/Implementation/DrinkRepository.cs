@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SipNSpice.API.Data;
 using SipNSpice.API.Models.Domain;
 using SipNSpice.API.Repositories.Interface;
@@ -41,6 +42,22 @@ namespace SipNSpice.API.Repositories.Implementation
         public async Task<Drink?> GetByIdAsync(Guid id)
         {
             return await dbContext.Drinks.Include(x=>x.Bases).FirstOrDefaultAsync(x=>x.Id == id);
+        }
+
+        public async Task<IEnumerable<Drink?>> GetCocktailsAsync()
+        {
+            return await dbContext.Drinks.Include(x => x.Bases).Where(x => x.Bases.Any(b => b.Name != "Non Alcoholic")).ToListAsync();
+        }
+
+        public async Task<Drink?> GetDrinkByBaseAsync(string basename)
+        {
+            return await dbContext.Drinks.Include(x => x.Bases).FirstOrDefaultAsync(x => x.Bases.Any(b => b.Name == basename));
+            
+        }
+
+        public async Task<IEnumerable<Drink?>> GetMocktailsAsync()
+        {
+            return await dbContext.Drinks.Include(x => x.Bases).Where(x => x.Bases.Any(b => b.Name == "Non Alcoholic")).ToListAsync();
         }
 
         public async Task<Drink?> UpdateAsync(Drink drink)
