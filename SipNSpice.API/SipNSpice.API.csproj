@@ -24,4 +24,10 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\Common\" />
+    <Folder Include="Images\Drinks\" />
+    <Folder Include="Images\Recipes\" />
+  </ItemGroup>
+
 </Project>
