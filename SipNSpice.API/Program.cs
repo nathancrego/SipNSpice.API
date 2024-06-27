@@ -27,14 +27,18 @@ builder.Services.AddSwaggerGen();
 //Injecting the dbcontext class using dependency injection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    //linking to the connection string
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SipNSpiceConnectionString"));
+    // Linking to the connection string
+    var connectionString = builder.Configuration.GetConnectionString("SipNSpiceConnectionString")
+                          ?? builder.Configuration["ConnectionStrings:SipNSpiceConnectionString"];
+    options.UseSqlServer(connectionString);
 });
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
 {
-    //Linking the authdb to the existing db connection string
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SipNSpiceConnectionString"));
+    // Linking the authdb to the existing db connection string
+    var connectionString = builder.Configuration.GetConnectionString("SipNSpiceConnectionString")
+                          ?? builder.Configuration["ConnectionStrings:SipNSpiceConnectionString"];
+    options.UseSqlServer(connectionString);
 });
 
 //Injecting the Repositories (Dependency Injection)

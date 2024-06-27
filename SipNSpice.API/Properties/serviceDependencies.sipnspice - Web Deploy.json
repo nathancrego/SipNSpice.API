@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sipnspice-prod-server/databases/SipNSpiceDB",
+      "type": "mssql.azure",
+      "connectionId": "Server=tcp:sipnspice-prod-server.database.windows.net,1433;InitialCatalog=SipNSpiceDB;PersistSecurityInfo=False;UserID=snssqlsuperadmin;Password=Snspr0d@2024$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;ConnectionTimeout=30;"
+    }
+  }
+}
