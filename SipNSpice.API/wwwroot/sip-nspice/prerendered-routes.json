@@ -1,0 +1,17 @@
+{
+  "routes": [
+    "/admin/bases",
+    "/admin/bases/add",
+    "/admin/cuisines",
+    "/admin/drinks",
+    "/admin/drinks/add",
+    "/admin/recipes",
+    "/admin/recipes/add",
+    "/cocktails",
+    "/home",
+    "/login",
+    "/mocktails",
+    "/recipes",
+    "/register"
+  ]
+}

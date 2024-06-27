@@ -108,8 +108,16 @@ app.UseAuthorization();
 //Static files
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Images")),
-    RequestPath = "/Images"
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot")),
+    RequestPath = string.Empty //serve from root
+});
+
+// Fallback for Angular client-side routing
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapFallbackToFile("index.html"); // Ensure all routes are handled by Angular
 });
 
 app.MapControllers();
