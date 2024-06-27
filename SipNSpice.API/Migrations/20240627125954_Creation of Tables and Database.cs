@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SipNSpice.API.Migrations
 {
     /// <inheritdoc />
-    public partial class ReinitializingtablesandDB : Migration
+    public partial class CreationofTablesandDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,6 +37,22 @@ namespace SipNSpice.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DrinkImages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DrinkImages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Drinks",
                 columns: table => new
                 {
@@ -51,6 +67,22 @@ namespace SipNSpice.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Drinks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecipeImages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecipeImages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -137,6 +169,12 @@ namespace SipNSpice.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "CuisineRecipe");
+
+            migrationBuilder.DropTable(
+                name: "DrinkImages");
+
+            migrationBuilder.DropTable(
+                name: "RecipeImages");
 
             migrationBuilder.DropTable(
                 name: "Bases");

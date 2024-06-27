@@ -25,9 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\Common\" />
-    <Folder Include="Images\Drinks\" />
-    <Folder Include="Images\Recipes\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

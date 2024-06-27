@@ -17,7 +17,7 @@ namespace SipNSpice.API.Migrations.AuthDb
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -52,14 +52,14 @@ namespace SipNSpice.API.Migrations.AuthDb
                         new
                         {
                             Id = "088926c1-9cee-4c88-aaf5-62bbed2269e8",
-                            ConcurrencyStamp = "87e6343f-a71d-43f2-b994-3b09b54605ba",
+                            ConcurrencyStamp = "2346451e-a969-449c-900c-3f88ee3e9176",
                             Name = "Reader",
                             NormalizedName = "READER"
                         },
                         new
                         {
                             Id = "7b6df99e-946a-425a-b312-709296422852",
-                            ConcurrencyStamp = "efdd0f56-9e0f-4654-a751-4e6676cc6ade",
+                            ConcurrencyStamp = "69bf2e63-e29e-49ee-9337-20b7b5b09fb2",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         });
@@ -159,15 +159,15 @@ namespace SipNSpice.API.Migrations.AuthDb
                         {
                             Id = "5d571cde-ba20-4e7b-92b0-b7a2b70e0e99",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "50a50cb9-a460-4392-b750-f94485b5fe98",
+                            ConcurrencyStamp = "1186636f-f587-4e20-9696-c154babd1e73",
                             Email = "admin@sipnspice.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@SIPNSPICE.COM",
                             NormalizedUserName = "ADMIN@SIPNSPICE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKsUnuD0YWAbOafM9mM7YL1a5mo4nKLkZvrrokWCB8hulXZo45tZKS7lJ7diJVAv2Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENDKAghRzY3LW2+s8mHavmzDEkPg1YaVRFr4AYY4myYk0iz4/Fqm40VwNEoroB/C5g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d102a87-1232-40b7-8a12-b40504d60f16",
+                            SecurityStamp = "9c1ac1f6-236a-4b2e-bbfa-ffd279bfaa77",
                             TwoFactorEnabled = false,
                             UserName = "admin@sipnspice.com"
                         });

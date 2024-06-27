@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SipNSpice.API.Migrations.AuthDb
 {
     /// <inheritdoc />
-    public partial class InitialIdentity : Migration
+    public partial class CreationofTablesandDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -163,14 +163,14 @@ namespace SipNSpice.API.Migrations.AuthDb
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "088926c1-9cee-4c88-aaf5-62bbed2269e8", "87e6343f-a71d-43f2-b994-3b09b54605ba", "Reader", "READER" },
-                    { "7b6df99e-946a-425a-b312-709296422852", "efdd0f56-9e0f-4654-a751-4e6676cc6ade", "Writer", "WRITER" }
+                    { "088926c1-9cee-4c88-aaf5-62bbed2269e8", "2346451e-a969-449c-900c-3f88ee3e9176", "Reader", "READER" },
+                    { "7b6df99e-946a-425a-b312-709296422852", "69bf2e63-e29e-49ee-9337-20b7b5b09fb2", "Writer", "WRITER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "5d571cde-ba20-4e7b-92b0-b7a2b70e0e99", 0, "50a50cb9-a460-4392-b750-f94485b5fe98", "admin@sipnspice.com", true, false, null, "ADMIN@SIPNSPICE.COM", "ADMIN@SIPNSPICE.COM", "AQAAAAIAAYagAAAAEKsUnuD0YWAbOafM9mM7YL1a5mo4nKLkZvrrokWCB8hulXZo45tZKS7lJ7diJVAv2Q==", null, false, "2d102a87-1232-40b7-8a12-b40504d60f16", false, "admin@sipnspice.com" });
+                values: new object[] { "5d571cde-ba20-4e7b-92b0-b7a2b70e0e99", 0, "1186636f-f587-4e20-9696-c154babd1e73", "admin@sipnspice.com", true, false, null, "ADMIN@SIPNSPICE.COM", "ADMIN@SIPNSPICE.COM", "AQAAAAIAAYagAAAAENDKAghRzY3LW2+s8mHavmzDEkPg1YaVRFr4AYY4myYk0iz4/Fqm40VwNEoroB/C5g==", null, false, "9c1ac1f6-236a-4b2e-bbfa-ffd279bfaa77", false, "admin@sipnspice.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
