@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SipNSpice.API.Data;
 
@@ -11,9 +12,11 @@ using SipNSpice.API.Data;
 namespace SipNSpice.API.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    partial class AuthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240716114428_initial create")]
+    partial class initialcreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +55,14 @@ namespace SipNSpice.API.Migrations.AuthDb
                         new
                         {
                             Id = "088926c1-9cee-4c88-aaf5-62bbed2269e8",
-                            ConcurrencyStamp = "c2a9655c-c8bb-42ec-8734-9bab665b643a",
+                            ConcurrencyStamp = "fdfb916e-4265-4ff5-a8b5-a4de5d4d4d5a",
                             Name = "Reader",
                             NormalizedName = "READER"
                         },
                         new
                         {
                             Id = "7b6df99e-946a-425a-b312-709296422852",
-                            ConcurrencyStamp = "807f2d52-5f24-4b64-a350-261c136bac81",
+                            ConcurrencyStamp = "c052b0a4-8907-490e-a3b7-86ea2334510a",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         });
@@ -159,15 +162,15 @@ namespace SipNSpice.API.Migrations.AuthDb
                         {
                             Id = "5d571cde-ba20-4e7b-92b0-b7a2b70e0e99",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7adc41f5-2dfb-4df9-8d7d-f5a34f3c1c43",
+                            ConcurrencyStamp = "5587bc68-9ec8-4d02-ad45-a6ff2bb4fb3f",
                             Email = "admin@sipnspice.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@SIPNSPICE.COM",
                             NormalizedUserName = "ADMIN@SIPNSPICE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKntixkuL15LJBX5yzDZb3QkDS2PWCL5CXdWyvI9rAGOtIQ3mjkXccII20MuOtIEmw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKy6ZZPE50adWICGrVBV/bSlCp0JM0ekYxjPt4zXyYmAji0wYf6qGipViG81jWlr8g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4bd45a79-fcbe-41dd-8dd3-0c2ce9d8ca78",
+                            SecurityStamp = "5a0d4e02-e558-4a7b-8e72-ffd4efbb049a",
                             TwoFactorEnabled = false,
                             UserName = "admin@sipnspice.com"
                         });

@@ -1,8 +1,14 @@
 {
   "dependencies": {
     "mssql1": {
+      "ignored": "true",
       "type": "mssql",
       "connectionId": "Server=tcp:sipnspice-prod-server.database.windows.net,1433;InitialCatalog=SipNSpiceDB;PersistSecurityInfo=False;UserID=snssqlsuperadmin;Password=Snspr0d@2024$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;ConnectionTimeout=30;"
+    },
+    "mssql2": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "SipNSpiceConnectionString"
     }
   }
 }

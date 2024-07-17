@@ -7,6 +7,7 @@ using SipNSpice.API.Data;
 using SipNSpice.API.Repositories.Implementation;
 using SipNSpice.API.Repositories.Interface;
 using System.Text;
+using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,7 @@ builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IRecipeImageRepository, RecipeImageRepository>();
 builder.Services.AddScoped<IDrinkImageRepository, DrinkImageRepository>();
+builder.Services.AddSingleton<BlobService>();
 
 //Injecting Identity Core
 builder.Services.AddIdentityCore<IdentityUser>()
@@ -86,6 +88,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// Read connection strings from environment variables
+builder.Configuration.AddEnvironmentVariables();
 
 var app = builder.Build();
 
@@ -107,25 +111,42 @@ app.UseCors(options =>
     options.AllowAnyMethod();
 });
 
-app.UseAuthentication();
+////Static files locally
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot")),
+//    RequestPath = string.Empty //serve from root
+//});
 
-app.UseAuthorization();
-
-//Static files
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot")),
-    RequestPath = string.Empty //serve from root
-});
+app.UseStaticFiles();
 
 // Fallback for Angular client-side routing
 app.UseRouting();
+// Authentication and Authorization middleware  
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
     endpoints.MapFallbackToFile("index.html"); // Ensure all routes are handled by Angular
 });
 
-app.MapControllers();
-
+//To apply migrations in production
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var appcontext = services.GetRequiredService<ApplicationDbContext>();
+        appcontext.Database.Migrate(); // Apply pending migrations
+        var authcontext = services.GetRequiredService<AuthDbContext>();
+        authcontext.Database.Migrate(); // Apply pending migrations
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
+}
 app.Run();
