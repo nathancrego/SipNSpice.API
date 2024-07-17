@@ -74,7 +74,6 @@ namespace SipNSpice.API.Controllers
                         }
                     }
                 }
-         
             }
             return BadRequest("Please enter a valid email address");
         }
