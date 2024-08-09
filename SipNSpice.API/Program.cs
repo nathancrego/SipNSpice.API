@@ -128,7 +128,7 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllers();
+    endpoints.MapControllers(); //maps attribute routed and convention based routing
     endpoints.MapFallbackToFile("index.html"); // Ensure all routes are handled by Angular
 });
 
